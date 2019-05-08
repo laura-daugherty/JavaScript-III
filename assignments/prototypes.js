@@ -37,11 +37,12 @@ function CharacterStats(characterAttributes) {
   this.healthPoints = characterAttributes.healthPoints;
   GameObject.call(this, characterAttributes);
   }
+CharacterStats.prototype = Object.create(GameObject.prototype);
 
 CharacterStats.prototype.takeDamage = function() {
-  return `${this.characterAttributes} took damage.`
+  return `${this.name} took damage.`
 }
-CharacterStats.prototype = Object.create(GameObject.prototype);
+
 
 function Humanoid(human) {
   CharacterStats.call(this, human)
@@ -49,11 +50,12 @@ function Humanoid(human) {
   this.weapons = human.weapons;
   this.language = human.language;
 }
+Humanoid.prototype = Object.create(CharacterStats.prototype);
 
 Humanoid.prototype.greet = function() {
   return `${this.name} offers a greeting in ${this.language}`
 }
-Humanoid.prototype = Object.create(CharacterStats.prototype);
+
 
 //Dog.prototype = Object.create(Animal.prototype);
 /*
